@@ -260,10 +260,11 @@ tls-auth ta.key 0
 topology subnet
 server 10.10.10.0 255.255.255.0
 ifconfig-pool-persist ipp.txt" > /etc/openvpn/server.conf
-	echo 'push "redirect-gateway def1 bypass-dhcp"' >> /etc/openvpn/server.conf
-	# colocar ip da rede (aprimorar este para poder editar na instalaçoa)
+	# echo 'push "redirect-gateway def1 bypass-dhcp"' >> /etc/openvpn/server.conf (comentado pois remove iternet do cliente quando conectada).
+	# colocar ip da rede (aprimorar este para poder editar na instalaçao)
 	echo 'push "route 10.1.1.1 255.255.255.0"' >> /etc/openvpn/server.conf
-	
+	echo 'client-config-dir /etc/openvpn/ccd' >> /etc/openvpn/server.conf
+	echo 'ccd-exclusive' >> /etc/openvpn/server.conf
 	# DNS
 	case $DNS in
 		1)
